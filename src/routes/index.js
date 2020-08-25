@@ -1,6 +1,11 @@
 "use strict";
+let express = require("express");
+let router = express.Router();
+
+let user = require("./user.route");
 
 function initRoutes() {
+  router.use("/user", user);
   /**
    * Health check up service
    *
