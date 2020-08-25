@@ -1,12 +1,11 @@
-// all controllers here"use strict"
+"use strict";
 
 /**
- * Clients controller
+ * user controller
  *
  */
 
 // Dependencies
-const config = require("../config");
 const userService = require("../services/user.service");
 
 // Controller wrapper

@@ -1,7 +1,7 @@
 "use strict";
 
 /**
- * Leads Service
+ * Users Service
  *
  */
 
@@ -32,7 +32,7 @@ service.signup = async (req) => {
       req.password = bcrypt.hashSync(req.password, 10);
       let user = await new User(req).save();
       if (user) {
-        let token = jwt.sign({ sub: user.id }, config.secret);
+        let token = jwt.sign({ userId: user.id }, config.secret);
         return {
           err: false,
           data: {
@@ -70,7 +70,7 @@ service.login = async (req) => {
 
     if (user) {
       if (bcrypt.compareSync(req.password, user.password)) {
-        let token = jwt.sign({ sub: user.id }, config.secret);
+        let token = jwt.sign({ userId: user.id }, config.secret);
         return {
           err: false,
           data: {
