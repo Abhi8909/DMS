@@ -62,7 +62,7 @@ controller.move = async (req, res) => {
 
 controller.getByFolder = async (req, res) => {
   let r = req.params;
-
+  r.userId = req.decoded.userId;
   let result = await fileService.getByFolder(r);
 
   if (!result.err) {

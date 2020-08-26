@@ -22,15 +22,14 @@ const service = {};
  * @returns {Object :{ err : Boolean, data :Object }}
  */
 service.create = async (req) => {
+  let session = await mongoose.startSession();
+  session.startTransaction();
   try {
     let nameSlug = req.name.replace(/ /g, "").toLowerCase();
     let query = { nameSlug: nameSlug };
     if (req.folderId) {
       query.folderId = req.folderId;
     }
-
-    let session = await mongoose.startSession();
-    session.startTransaction();
 
     let file = await File.findOne(query);
 
@@ -87,15 +86,14 @@ service.create = async (req) => {
  * @returns {Object :{ err : Boolean, data :Object }}
  */
 service.move = async (req) => {
+  let session = await mongoose.startSession();
+  session.startTransaction();
   try {
     let query = { _id: req.fileId };
 
     if (req.srcFolderId) {
       query.folderId = req.srcFolderId;
     }
-
-    let session = await mongoose.startSession();
-    session.startTransaction();
 
     let file = await File.findOne(query);
 
@@ -220,6 +218,7 @@ service.getByFolder = async (req) => {
   try {
     let query = {
       folderId: req.folderId,
+      userId: req.userId
     };
 
     let files = await File.find(query)
