@@ -19,6 +19,10 @@ let Schema = new mongoose.Schema({
   userId: {
     type: String,
   },
+  type: {
+    type: String,
+    default: "folder",
+  },
   createdAt: {
     type: Number,
     default: Date.now(),

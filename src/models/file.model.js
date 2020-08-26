@@ -25,6 +25,10 @@ let Schema = new mongoose.Schema({
     type: Number,
     default: Date.now(),
   },
+  type: {
+    type: String,
+    default: "file",
+  },
   lastUpdatedAt: {
     type: Number,
     default: Date.now(),
