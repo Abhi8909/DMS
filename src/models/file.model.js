@@ -35,4 +35,7 @@ let Schema = new mongoose.Schema({
   },
 });
 
+// UserId index
+Schema.index({ folderId: 1 });
+
 module.exports = mongoose.model("files", Schema);

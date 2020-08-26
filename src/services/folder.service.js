@@ -6,7 +6,6 @@
  */
 
 // Dependencies
-const config = require("../config");
 const utils = require("../utils");
 
 const Folder = require("../models/folder.model");
