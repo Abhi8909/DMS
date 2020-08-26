@@ -23,7 +23,7 @@ controller.create = async (req, res) => {
   if (!result.err) {
     res.send({
       data: result.data,
-      msg: "Login success",
+      msg: "Folder created successfully",
     });
   } else {
     res.send({

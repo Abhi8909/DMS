@@ -22,7 +22,6 @@ let auth = async (req, res, next) => {
             message: "Authentication failed",
           });
         } else {
-          console.log(decoded);
           req.decoded = decoded;
           next();
         }

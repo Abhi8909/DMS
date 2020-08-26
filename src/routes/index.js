@@ -4,15 +4,18 @@ let router = express.Router();
 
 let user = require("./user.route");
 let folder = require("./folder.route");
+let file = require("./file.route");
 
 function initRoutes() {
   router.use("/user", user);
   router.use("/folder", folder);
+  router.use("/file", file);
+
   /**
    * Health check up service
    *
    */
-  router.get("/health", (req, res) => {
+  router.get("/ping", (req, res) => {
     res.send({ msg: "Service Runnning..." });
   });
 }

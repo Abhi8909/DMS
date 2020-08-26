@@ -21,11 +21,13 @@ const service = {};
  */
 service.create = async (req) => {
   try {
+    let titleSlug = req.title.replace(/ /g, "").toLowerCase();
     let folder = await Folder.findOne({
-      title: `/^${req.title}$/i`,
+      titleSlug: titleSlug,
     });
 
     if (!folder) {
+      req.titleSlug = titleSlug;
       let newFolder = await new Folder(req).save();
       if (newFolder) {
         return {
@@ -63,7 +65,7 @@ service.getByUser = async (req) => {
     let folders = await Folder.find(query)
       .limit(req.limit || 20)
       .skip(req.skip || 0)
-      .sort({ createdAt: -1 });
+      .sort({ title: -1 });
 
     if (folders.length > 0) {
       return {

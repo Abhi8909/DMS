@@ -3,21 +3,23 @@
 let mongoose = require("mongoose");
 
 let Schema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  titleSlug: {
+  name: {
     type: String,
     required: true,
   },
-  numOfFiles: {
-    type: Number,
-    default: 0,
+  nameSlug: {
+    type: String,
+    required: true,
+  },
+  folderId: {
+    type: String,
   },
   userId: {
     type: String,
+  },
+  content: {
+    type: String,
+    required: true,
   },
   createdAt: {
     type: Number,
@@ -29,4 +31,4 @@ let Schema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("folders", Schema);
+module.exports = mongoose.model("files", Schema);
